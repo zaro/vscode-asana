@@ -1,0 +1,108 @@
+{
+	"name": "vscode-asana",
+	"displayName": "Asana",
+	"publisher": "broken-by-design",
+	"author": {
+		"name": "Svetlozar Argirov",
+		"email": "zarrro@gmail.com"
+	},
+	"repository": {
+		"url": "https://github.com/zaro/vscode-asana.git",
+		"type": "git"
+	},
+	"description": "Search Asana tasks from vscode",
+	"keywords": [
+		"asana",
+		"task"
+	],
+	"version": "0.0.1",
+	"icon": "images/logo.png",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.asanaSelectProjects",
+		"onCommand:extension.asanaCopyTaskId",
+		"onCommand:extension.asanaCopyTaskURL"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.asanaCopyTaskId",
+				"title": "Asana: Copy Task Id"
+			},
+			{
+				"command": "extension.asanaCopyTaskURL",
+				"title": "Asana: Copy Task URL"
+			},
+			{
+				"command": "extension.asanaSelectProjects",
+				"title": "Asana: Configure projects"
+			}
+		],
+		"configuration": [
+			{
+				"title": "Asana",
+				"properties": {
+					"asana.apiToken": {
+						"type": "string",
+						"description": "Asana API Token",
+						"scope": "window"
+					},
+					"asana.workspaceId": {
+						"type": "string",
+						"description": "Default Asana workspace Id",
+						"scope": "window"
+					},
+					"asana.selectedProjects": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"title": "Project Id"
+						},
+						"default": [],
+						"description": "Use only these projects"
+					},
+					"asana.prependStringToTaskNumber": {
+						"type": "string",
+						"default": "#",
+						"description": "Prepend string to task Id on copy",
+						"scope": "window"
+					},
+					"asana.searchAssignedToMeOnly": {
+						"type": "boolean",
+						"default": false,
+						"description": "Search only tasks assigned to me when true, followed tasks else",
+						"scope": "window"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"compile": "webpack --mode none",
+		"watch": "webpack --mode none --watch",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/asana": "^0.14.36",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"ts-loader": "^6.0.1",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"webpack": "^4.32.2",
+		"webpack-cli": "^3.3.2"
+	},
+	"dependencies": {
+		"asana": "^0.16.6"
+	},
+	"license": "BSD-3-Clause"
+}
