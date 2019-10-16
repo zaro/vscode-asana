@@ -15,7 +15,7 @@
 		"asana",
 		"task"
 	],
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"icon": "images/logo.png",
 	"engines": {
 		"vscode": "^1.34.0"
@@ -91,18 +91,18 @@
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"@types/asana": "^0.14.36",
+		"@types/asana": "^0.14.37",
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
 		"ts-loader": "^6.0.1",
 		"tslint": "^5.12.1",
 		"typescript": "^3.3.1",
 		"vscode": "^1.1.28",
-		"webpack": "^4.32.2",
-		"webpack-cli": "^3.3.2"
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.9"
 	},
 	"dependencies": {
-		"asana": "^0.16.6"
+		"asana": "^0.17.3"
 	},
 	"license": "BSD-3-Clause"
 }

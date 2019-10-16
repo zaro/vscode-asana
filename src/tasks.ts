@@ -34,8 +34,10 @@ class AsanaTaskItem implements QuickPickItem {
 
 	constructor(public asanaTask: asana.resources.Tasks.Type) {
 		this.label = asanaTask.name;
-		this.description = asanaTask.id.toString();
-		const sections = asanaTask.memberships.filter((e: asana.resources.Membership) => !!e.section).map((e: asana.resources.Membership) => e.section.name).join(', ');
+		this.description = asanaTask.gid.toString();
+		const sections = asanaTask.memberships
+			.map((e: asana.resources.Membership):string|null => e.section ? e.section.name: null)
+			.filter((e: string|null) => !!e).join(', ');
 		this.detail = (sections ? '[' + sections + '] ' : '') + asanaTask.projects.map((e: asana.resources.Resource) => e.name).join(', ');
 	}
 }

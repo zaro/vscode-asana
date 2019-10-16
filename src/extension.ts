@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if(task){
 			let prepend = config.getPrependStringToTaskId()
 
-			vscode.env.clipboard.writeText(`${prepend}${task.asanaTask.id}`)
+			vscode.env.clipboard.writeText(`${prepend}${task.asanaTask.gid}`)
 			// Display a message box to the user
 			vscode.window.showInformationMessage('Task Id copied to clipboard');
 		}
@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 			let urlProjectId = '0';
 			for(const projectId of selectedProjects){
 				for(const taskProject of task.asanaTask.projects){
-					if(projectId === taskProject.id.toString()){
+					if(projectId === taskProject.gid.toString()){
 						urlProjectId = projectId;
 						break;
 					}
@@ -44,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 					break;
 				}
 			}
-			vscode.env.clipboard.writeText(`https://app.asana.com/0/${urlProjectId}/${task.asanaTask.id}`)
+			vscode.env.clipboard.writeText(`https://app.asana.com/0/${urlProjectId}/${task.asanaTask.gid}`)
 			// Display a message box to the user
 			vscode.window.showInformationMessage('Task URL copied to clipboard');
 		}
